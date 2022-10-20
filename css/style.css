@@ -21,6 +21,11 @@
     background-color: var(--light-mode-light-gray-background);
 }
 
+.hide {
+    display: none;
+}
+
+/* nav section */
 .navbar,
 .nav-options,
 .nav-options h3,
@@ -28,7 +33,8 @@
     background-color: #fff;
 }
 
-.nav-options {
+.nav-options,
+.search-and-filter {
     width: 90%;
     margin: 0 AUTO;
     padding: 1rem 0;
@@ -38,4 +44,74 @@
 
 .world-logo h3 {
     font-weight: var(--font-weight-very-bold);
+}
+
+/* search section */
+.search-and-filter {
+    padding-top: 2rem;
+}
+
+.searchbar {
+    width: 40%;
+    background-color: #fff;
+    border-radius: 3px solid var(--light-mode-light-gray-background);
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.searchbar i {
+    padding: 15px 0px 15px 10px;
+}
+
+.searchbar input {
+    width: 90%;
+    padding: 15px 0px 15px 10px;
+    border: none;
+    background-color: #fff;
+}
+
+.filter-container {
+    width: 20%;
+    position: relative;
+}
+
+.filter-dropdown {
+    padding: 15px 0px;
+    display: flex;
+    justify-content: space-around;
+    background-color: #fff;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.filter-dropdown p {
+    background-color: #fff;
+    font-size: .85rem;
+    font-weight: var(--font-weight-bold);
+}
+
+.filter-dropdown:hover {
+    cursor: pointer;
+}
+
+.filter-options {
+    width: 100%;
+    height: auto;
+    margin-top: 10px;
+    position: absolute;
+    z-index: 10;
+    transition: all .3s ease-in;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.filter-options p {
+    padding-top: 10px;
+    padding-left: 20px;
+    background-color: #fff;
+}
+
+.filter-options p:hover {
+    cursor: pointer;
+}
+
+.filter-options:last-child {
+    padding-bottom: 10px;
 }
