@@ -115,3 +115,42 @@
 .filter-options:last-child {
     padding-bottom: 10px;
 }
+
+/* Countries Section */
+.available-countries {
+    width: 90%;
+    margin: 0 auto;
+    padding-top: 20px;
+    display: grid;
+    gap: 2.5rem;
+    grid-template-columns: repeat(3 , 1fr);
+}
+
+.country-info {
+    /* padding: 20px 0px 20px 15px; */
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
+}
+
+.country-flag img {
+    width: 100%;
+    max-height: 160px;
+}
+
+.country-name {
+ padding: 25px 0 20px 15px;
+}
+
+.population,
+.region,
+.capital {
+    padding:  15px 0 0 15px;
+}
+
+@media screen and (min-width: 1439.98px) {
+    .available-countries {
+        grid-template-columns: repeat(4 , 1fr);
+    }
+}
