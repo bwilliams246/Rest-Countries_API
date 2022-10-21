@@ -137,7 +137,14 @@
     background-color: #fff;
     border-radius: 5px;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
 
+.country-info p:last-child {
+    padding-bottom: 35px;
+}
+
+.country-flag:hover {
+    cursor: pointer;
 }
 
 .country-flag img {
@@ -153,5 +160,11 @@
 .region,
 .capital {
     padding:  15px 0 0 15px;
+}
+
+.population span,
+.region span,
+.capital span {
+    margin-right: 8px;
     font-weight: var(--font-weight-bold);
 }

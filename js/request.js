@@ -31,9 +31,9 @@ const displayCountries = (index) => {
     let countryInfo = `<div class="country-info">
                 <div class="country-flag"><img src="${flags[index]}" alt="Flag"></div>
                 <div class="country-name"><h4>${countryNames[index]}</h4></div>
-                <p class="population">Population: ${populations[index]}</p>   
-                <p class="region">Region: ${regions[index]}</p>   
-                <p class="capital">Capital: ${capitalName}</p>   
+                <p class="population"><span>Population: </span>${populations[index].toLocaleString()}</p>   
+                <p class="region"><span>Region: </span>${regions[index]}</p>   
+                <p class="capital"><span>Capital: </span>${capitalName}</p>   
             </div>`;
 
         availableCountries.insertAdjacentHTML('afterbegin' , countryInfo);
