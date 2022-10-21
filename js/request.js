@@ -14,6 +14,29 @@ const dataStorage = data => {
     regions.push(data.region);
     capitals.push(data.capital);
     flags.push(data.flags.png);
+};
+
+const displayCountries = (index) => {
+    /* Function that takes in the current index in a loop
+       places a country's stats in HTML and appends them to a parent element 
+    
+       Function also checks to see if a country has a capital
+    */
+   let capitalName = '';
+
+    if (capitals[index]) {
+        capitalName = capitals[index][0];
+    } else capitalName = 'none';
+
+    let countryInfo = `<div class="country-info">
+                <div class="country-flag"><img src="${flags[index]}" alt="Flag"></div>
+                <div class="country-name"><h4>${countryNames[index]}</h4></div>
+                <p class="population">Population: ${populations[index]}</p>   
+                <p class="region">Region: ${regions[index]}</p>   
+                <p class="capital">Capital: ${capitalName}</p>   
+            </div>`;
+
+        availableCountries.insertAdjacentHTML('afterbegin' , countryInfo);
 }
 
 /* API GET Request */
@@ -23,21 +46,10 @@ xhttp.onreadystatechange = function () {
         let data = JSON.parse(xhttp.responseText);
         
         /* Loop through the entire dataset */
-        data.forEach( (obj) => {
+        data.forEach( (obj , i) => {
             dataStorage(obj);
+            displayCountries(i);
         });
-
-        for (let i = 0 ; i < 9 ; i++) {
-            let countryInfo = `<div class="country-info">
-                    <div class="country-flag"><img src="${flags[i]}" alt="Flag"></div>
-                    <div class="country-name"><h4>${countryNames[i]}</h4></div>
-                    <p class="population">Population: ${populations[i]}</p>   
-                    <p class="region">Region: ${regions[i]}</p>   
-                    <p class="capital">Capital: ${capitals[i][0]}</p>   
-                </div>`;
-
-            availableCountries.insertAdjacentHTML('afterbegin' , countryInfo);
-        }
     };
 };
 xhttp.open("GET" , "https://restcountries.com/v3.1/all" , true);
