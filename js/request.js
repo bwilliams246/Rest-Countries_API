@@ -87,6 +87,15 @@ const updateCurrentCountry = index => {
     currentCountrySection[0].insertAdjacentHTML('afterbegin' , currentCountryInfo);
 };
 
+const deleteCurrentCountry = () => {
+    /* Function that removes a SELECTED country's information before 
+       closing the container
+    */
+    while (currentCountrySection[0].firstChild) {
+        currentCountrySection[0].removeChild(currentCountrySection[0].firstChild);
+    };
+};
+
 const displayCurrentCountry = () => {
     /* Function that loop through each flag image and adds a click listener 
        Once a flag is clicked, a container displaying additional information
@@ -111,7 +120,7 @@ const hideCurrentCountry = () => {
        by clicking the Back Button
     */
     backBtn.addEventListener('click' , e => {
-        /* deleteCurrentCountry(); */
+        deleteCurrentCountry(); 
         popupSection[0].classList.toggle('hide');
         currentCountrySection[0].classList.toggle('hide');
     });
