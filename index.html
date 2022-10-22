@@ -24,11 +24,11 @@
     </div>
 
     <div class="search-and-filter">
-        <div class="searchbar">
+        <div class="searchbar hide">
             <i class="fa-solid fa-magnifying-glass"></i> <input type="text" name="" id="country-search" class="country-search" placeholder="Search for a country...">
         </div>
 
-        <div class="filter-container">
+        <div class="filter-container hide">
             <div class="filter-dropdown"><p>Filter by Region</p> <i class="fa-sharp fa-solid fa-arrow-down"></i></div>
             <div class="filter-options hide">
                 <p>Africa</p>
@@ -38,10 +38,57 @@
                 <p>Oceana</p>
             </div>
         </div>
+
+        <div class="back-btn"><i class="fa-solid fa-arrow-left"></i>Back</div>
+    </div>
+
+    <div class="popup-menu hide">
+        <div class="current-country hide">
+            <div class="current-country-flag"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9e/Flag_of_Japan.svg/1200px-Flag_of_Japan.svg.png" alt="Flag"></div>
+
+            <div class="current-country-info">
+                <div class="current-country-title"><h2>Japan</h2></div>
+
+                <div>
+                    <div class="info-columns">
+                        <div class="first-column">
+                            <div class="stat native-name"><span>Native Name: </span></div>
+                            <div class="stat current-population"><span>Population: </span></div>
+                            <div class="stat current-region"><span>Region: </span></div>
+                            <div class="stat sub-region"><span>Sub Region: </span></div>
+                            <div class="stat current-capital"><span>Capital: </span></div>
+                        </div>
+
+                        <div class="second-column">
+                            <div class="stat domain"><span>Top Level Domain: </span></div>
+                            <div class="stat currency"><span>Currencies: </span></div>
+                            <div class="stat languages"><span>Languages: </span></div>
+                        </div>
+                    </div>
+
+                    <div class="surrounding-countries">
+                        <div class="stat">
+                            <span>Bordering Countries: </span>
+                        </div>
+                        <div class="bordering-container">
+                            <div class="bordering-country">Little Garden</div>
+                            <div class="bordering-country">Jaya</div>
+                            <div class="bordering-country">Drum Island</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="available-countries">
-        
+        <div class="country-info">
+            <div class="country-flag"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9e/Flag_of_Japan.svg/1200px-Flag_of_Japan.svg.png" alt="Flag"></div>
+            <div class="country-name"><h4>Namek</h4></div>
+            <p class="population"><span>Population: </span>Over 9,000!!!</p>   
+            <p class="region"><span>Region: </span>Vegeta</p>   
+            <p class="capital"><span>Capital: </span>Kame House</p>   
+        </div>
     </div>
 
     <div id="test"></div>

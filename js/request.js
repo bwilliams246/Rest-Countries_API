@@ -1,5 +1,8 @@
 /* Variables */
 const availableCountries = document.getElementsByClassName('available-countries')[0];
+const currentCountrySection = document.getElementsByClassName('current-country');
+const popupSection = document.getElementsByClassName('popup-menu');
+const backBtn = document.getElementsByClassName('back-btn')[0];
 let countryNames = [];
 let populations = [];
 let regions = [];
@@ -37,7 +40,35 @@ const displayCountries = (index) => {
             </div>`;
 
         availableCountries.insertAdjacentHTML('afterbegin' , countryInfo);
+};
+
+const displayCurrentCountry = () => {
+    /* Function that loop through each flag image and adds a click listener 
+       Once a flag is clicked, a container displaying additional information
+       about the country appears
+    */
+    const displayedFlags = [...document.getElementsByClassName('country-flag')];
+    
+    displayedFlags.forEach( flag => {
+        flag.addEventListener('click' , (e) => {
+            popupSection[0].classList.toggle('hide');
+            currentCountrySection[0].classList.toggle('hide');
+        });
+    });
+};
+
+const hideCurrentCountry = () => {
+    /* Function that hides the additional country information container 
+       by clicking the Back Button
+    */
+    backBtn.addEventListener('click' , e => {
+        popupSection[0].classList.toggle('hide');
+        currentCountrySection[0].classList.toggle('hide');
+    });
 }
+
+displayCurrentCountry();
+hideCurrentCountry();
 
 /* API GET Request */
 var xhttp = new XMLHttpRequest();
@@ -45,12 +76,16 @@ xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
         let data = JSON.parse(xhttp.responseText);
         
-        /* Loop through the entire dataset */
+        /* Loops through the entire dataset */
         data.forEach( (obj , i) => {
             dataStorage(obj);
             displayCountries(i);
         });
+
+        /* Displays additional information about a current flag */
+        displayCurrentCountry();
+        hideCurrentCountry();
     };
 };
-xhttp.open("GET" , "https://restcountries.com/v3.1/all" , true);
-xhttp.send();
+/* xhttp.open("GET" , "https://restcountries.com/v3.1/all" , true);
+xhttp.send(); */

@@ -122,6 +122,24 @@
     padding-bottom: 10px;
 }
 
+.back-btn {
+    width: 12%;
+    padding: 8px 0px;
+    background-color: #fff;
+    text-align: center;
+    border: .5px solid var(--light-mode-light-gray-background);
+    border-radius: 3%;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.back-btn:hover {
+    cursor: pointer;
+}
+
+.back-btn i {
+    margin-right: 5px;
+}
+
 /* Countries Section */
 .available-countries {
     width: 90%;
@@ -167,4 +185,76 @@
 .capital span {
     margin-right: 8px;
     font-weight: var(--font-weight-bold);
+}
+
+/* Current Country Popup Section */
+.popup-menu {
+    position: relative;
+    width: 100%;
+    background-color: var(--light-mode-light-gray-background);
+}
+
+.hide-section {
+    height: 0!important;
+    opacity: 0;
+    transition: all .4s ease-in;
+}
+
+.current-country {
+    position: absolute;
+    width: 90%;
+    height: 80vh;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    background-color: var(--light-mode-light-gray-background);
+    opacity: 1;
+    z-index: 10;
+    transition: all .4s ease-out;
+}
+
+.current-country-flag,
+.current-country-info {
+    width: 40%;
+    background-color: var(--light-mode-light-gray-background);
+}
+
+.current-country-flag img {
+    width: 100%;
+}
+
+.current-country-title {
+    padding: 30px 0px;
+}
+
+
+.info-columns {
+    display: flex;
+}
+
+.first-column {
+    width: 50%;
+}
+
+.stat {
+    padding: 10px 15px 0px 0px;
+    font-weight: var(--font-weight-bold);
+}
+
+.surrounding-countries {
+    padding-top: 50px;
+    display: flex;
+}
+
+.bordering-container {
+    display: flex;
+}
+
+.bordering-country {
+    padding: 8px;
+    background-color: #fff;
+    border-radius: 3%;
+    border: .5px solid var(--light-mode-light-gray-background);
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    font-weight: var(--font-weight-light);
 }
