@@ -2,6 +2,8 @@
 const availableCountries = document.getElementsByClassName('available-countries')[0];
 const currentCountrySection = document.getElementsByClassName('current-country');
 const popupSection = document.getElementsByClassName('popup-menu');
+const searchbar = document.getElementsByClassName('searchbar')[0];
+const filterBox =document.getElementsByClassName('filter-container')[0];
 const backBtn = document.getElementsByClassName('back-btn')[0];
 let countryNames = [];
 let populations = [];
@@ -20,6 +22,13 @@ const dataStorage = data => {
     regions.push(data.region);
     capitals.push(data.capital);
     flags.push(data.flags.png);
+};
+
+const alterNavbar = () => {
+    /* Function that hides the searchbar and displays the 'back' button */
+    searchbar.classList.toggle('hide');
+    filterBox.classList.toggle('hide');
+    backBtn.classList.toggle('hide');
 };
 
 const displayCountries = (index) => {
@@ -108,6 +117,7 @@ const displayCurrentCountry = () => {
     
     displayedFlags.reverse().forEach( (flag , i) => {
         flag.addEventListener('click' , (e) => {
+            alterNavbar();
             updateCurrentCountry(i); 
             popupSection[0].classList.toggle('hide');
             currentCountrySection[0].classList.toggle('hide');
@@ -120,6 +130,7 @@ const hideCurrentCountry = () => {
        by clicking the Back Button
     */
     backBtn.addEventListener('click' , e => {
+        alterNavbar();
         deleteCurrentCountry(); 
         popupSection[0].classList.toggle('hide');
         currentCountrySection[0].classList.toggle('hide');
