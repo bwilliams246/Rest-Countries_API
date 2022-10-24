@@ -2,7 +2,8 @@
 const availableCountries = document.getElementsByClassName('available-countries')[0];
 const currentCountrySection = document.getElementsByClassName('current-country');
 const popupSection = document.getElementsByClassName('popup-menu');
-const searchbar = document.getElementsByClassName('searchbar')[0];
+const searchBar = document.getElementsByClassName('country-search')[0];
+const searchbox = document.getElementsByClassName('searchbar')[0];
 const filterBox =document.getElementsByClassName('filter-container')[0];
 const backBtn = document.getElementsByClassName('back-btn')[0];
 let countryNames = [];
@@ -25,8 +26,8 @@ const dataStorage = data => {
 };
 
 const alterNavbar = () => {
-    /* Function that hides the searchbar and displays the 'back' button */
-    searchbar.classList.toggle('hide');
+    /* Function that hides the searchbox and displays the 'back' button */
+    searchbox.classList.toggle('hide');
     filterBox.classList.toggle('hide');
     backBtn.classList.toggle('hide');
 };
@@ -137,6 +138,33 @@ const hideCurrentCountry = () => {
     });
 };
 
+const searchForCountry = () => {
+    /* Function that :
+        takes an input from the searchbar
+        compares that search to each displayed country name
+        hides each country-info card / container that doesn't include the input
+    */
+    const countryInfoCards = [...document.getElementsByClassName('country-info')];
+    const availableNames = [...document.getElementsByClassName('country-name')];
+    let search = '';
+
+    searchBar.addEventListener('input' , e => {
+        search = e.target.value.toLowerCase();
+
+        availableNames.forEach( (countryName , i) => {
+            let currentCountry = countryName.children[0].textContent.toLowerCase();
+
+            if (currentCountry.includes(search)) {
+                countryInfoCards[i].style.display = ''; 
+            }
+            else {
+                countryInfoCards[i].style.display = 'none'; 
+            };
+        });
+    });
+};
+
+/* searchForCountry(countryNames); */
 /* displayCurrentCountry();
 hideCurrentCountry(); */
 
@@ -156,6 +184,7 @@ xhttp.onreadystatechange = function () {
         /* Displays additional information about a current flag */
         displayCurrentCountry();
         hideCurrentCountry();
+        searchForCountry();
     };
 };
 xhttp.open("GET" , "https://restcountries.com/v3.1/all" , true);
