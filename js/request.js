@@ -49,7 +49,7 @@ const displayCountries = (index) => {
                 <div class="country-flag"><img src="${flags[index]}" alt="Flag"></div>
                 <div class="country-name"><h4>${countryNames[index]}</h4></div>
                 <p class="population"><span>Population: </span>${populations[index].toLocaleString()}</p>   
-                <p class="region"><span>Region: </span>${regions[index]}</p>   
+                <p class="info-region"><span>Region: </span>${regions[index]}</p>   
                 <p class="capital"><span>Capital: </span>${capitalName}</p>   
             </div>`;
 
@@ -164,8 +164,35 @@ const searchForCountry = () => {
     });
 };
 
-/* searchForCountry(countryNames); */
-/* displayCurrentCountry();
+const filterRegions = () => {
+    /* Function that:
+        adds a click listener to each of the filter options
+        stores the selected / clicked region in a variable
+        loops through each displayed region WITHIN each ocuntry-info container
+        tests if the displayed region isn't what the the user selected
+        hides the undesired regions
+    */
+    const countryInfoCards = [...document.getElementsByClassName('country-info')];
+    const filterBoxOptions = [...document.getElementsByClassName('region')];
+    const displayedRegions = [...document.getElementsByClassName('info-region')];
+
+    filterBoxOptions.forEach( option => {
+        option.addEventListener('click' , e => {
+            let selectedRegion = `Region: ${e.target.textContent}`;
+            
+            displayedRegions.forEach( (region , i) => {
+                if (!region.textContent.includes(selectedRegion)) {
+                    countryInfoCards[i].classList.toggle('hide');
+                };
+            });
+        });
+    });
+    
+};
+
+/*filterRegions();
+searchForCountry(countryNames);
+displayCurrentCountry();
 hideCurrentCountry(); */
 
 /* API GET Request */
@@ -185,6 +212,7 @@ xhttp.onreadystatechange = function () {
         displayCurrentCountry();
         hideCurrentCountry();
         searchForCountry();
+        filterRegions();
     };
 };
 xhttp.open("GET" , "https://restcountries.com/v3.1/all" , true);

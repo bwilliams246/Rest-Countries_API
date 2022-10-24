@@ -180,13 +180,13 @@
 }
 
 .population,
-.region,
+.info-region,
 .capital {
     padding:  15px 0 0 15px;
 }
 
 .population span,
-.region span,
+.info-region span,
 .capital span {
     margin-right: 8px;
     font-weight: var(--font-weight-bold);
