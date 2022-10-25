@@ -28,12 +28,6 @@ body {
     display: none;
 }
 
-@media screen and (min-width: 1439.98px) {
-    .available-countries {
-        grid-template-columns: repeat(4 , 1fr);
-    }
-}
-
 /* nav section */
 .header {
     width: 100%;
@@ -51,13 +45,26 @@ body {
     cursor: pointer;
 }
 
-.nav-options,
-.search-and-filter {
+.nav-options {
     width: 90%;
-    margin: 0 AUTO;
+    margin: 0 auto;
     padding: 1rem 0;
     display: flex;
     justify-content: space-between;
+}
+
+.search-and-filter {
+    width: 100%;
+    padding: 1rem 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.search-and-filter > div {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin: 0 AUTO;
 }
 
 .world-logo h3 {
@@ -286,8 +293,19 @@ body {
     background-color: var(--dark-mode-dark-blue-background);
 }
 
+@media screen and (min-width: 1439.98px) {
+    .available-countries {
+        grid-template-columns: repeat(4 , 1fr);
+    }
+}
+
 /* Tablet Styles */
 @media screen and (max-width: 768.98px) {
+    .search-and-filter > div {
+        width: 100%;
+        display: inline-block;
+    }
+    
     .search-and-filter {
         width: 100%;
         display: inline-block;
