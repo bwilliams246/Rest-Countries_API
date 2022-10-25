@@ -285,3 +285,51 @@ body {
 .dark-mode-dark-blue {
     background-color: var(--dark-mode-dark-blue-background);
 }
+
+/* Tablet Styles */
+@media screen and (max-width: 768.98px) {
+    .search-and-filter {
+        width: 100%;
+        display: inline-block;
+    }
+
+    .searchbar {
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    .filter-container {
+        width: 45%;
+        margin-left: 5.5%;
+        margin-top: 5px;
+    }
+
+    .available-countries {
+        padding-top: 275px;
+        grid-template-columns: repeat(2 , 1fr);
+    }
+}
+
+/* Mobile Styles */
+@media screen and (max-width: 499.98px) {
+    .search-and-filter {
+        width: 100%;
+        display: inline-block;
+    }
+
+    .searchbar {
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    .filter-container {
+        width: 45%;
+        margin-left: 5.5%;
+        margin-top: 5px;
+    }
+
+    .available-countries {
+        padding-top: 275px;
+        grid-template-columns: repeat(1 , 1fr);
+    }
+}
