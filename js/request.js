@@ -56,6 +56,16 @@ const displayCountries = (index) => {
         availableCountries.insertAdjacentHTML('afterbegin' , countryInfo);
 };
 
+const checkForDarkMode = () => {
+    /* Function that "checks for dark mode ^_^" */
+    let currentCountry = document.getElementsByClassName('current-country')[0];
+
+    if (currentCountry.classList.contains('dark-mode-dark-blue')) {
+        document.getElementsByClassName('current-country-flag')[0].classList.toggle('dark-mode-dark-blue');
+        document.getElementsByClassName('current-country-info')[0].classList.toggle('dark-mode-dark-blue');
+    };
+};
+
 const updateCurrentCountry = index => {
     /* Function that places the selected country's stats in HTML elements 
        and appends them to a parent element
@@ -95,6 +105,7 @@ const updateCurrentCountry = index => {
             </div>`;
     
     currentCountrySection[0].insertAdjacentHTML('afterbegin' , currentCountryInfo);
+    checkForDarkMode();
 };
 
 const deleteCurrentCountry = () => {
@@ -216,4 +227,4 @@ xhttp.onreadystatechange = function () {
     };
 };
 xhttp.open("GET" , "https://restcountries.com/v3.1/all" , true);
-xhttp.send();
+xhttp.send(); 

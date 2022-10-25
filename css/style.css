@@ -18,6 +18,9 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Nunito Sans', sans-serif;
+}
+
+body {
     background-color: var(--light-mode-light-gray-background);
 }
 
@@ -44,6 +47,10 @@
     background-color: #fff;
 }
 
+.dark-mode-toggle:hover {
+    cursor: pointer;
+}
+
 .nav-options,
 .search-and-filter {
     width: 90%;
@@ -60,6 +67,7 @@
 /* search section */
 .search-and-filter {
     padding-top: 2rem;
+    background-color: var(--light-mode-light-gray-background);
 }
 
 .searchbar {
@@ -262,4 +270,18 @@
     border: .5px solid var(--light-mode-light-gray-background);
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     font-weight: var(--font-weight-light);
+}
+
+/* Dark Mode Styles */
+.dark-mode-font-color {
+    color: #fff!important;
+}
+
+.dark-mode-light-blue {
+    background-color: var(--dark-mode-dark-blue)!important;
+    border: none;
+}
+
+.dark-mode-dark-blue {
+    background-color: var(--dark-mode-dark-blue-background);
 }
