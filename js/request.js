@@ -8,8 +8,10 @@ const filterBox =document.getElementsByClassName('filter-container')[0];
 const backBtn = document.getElementsByClassName('back-btn')[0];
 let countryNames = [];
 let populations = [];
+let nativeNames = [];
 let subregions = [];
 let languages = [];
+let currencies = [];
 let regions = [];
 let capitals = [];
 let flags = [];
@@ -20,11 +22,14 @@ const dataStorage = data => {
     /* Function that stores the desired data into the corresponding array */
     countryNames.push(data.name.common);
     populations.push(data.population);
-    subregions.push(data.tld);
+    nativeNames.push(data.name.nativeName);
+    subregions.push(data.subregion);
     languages.push(data.languages);
+    currencies.push(data.currencies);
     regions.push(data.region);
     capitals.push(data.capital);
     flags.push(data.flags.png);
+    tld.push(data.tld);
 };
 
 const alterNavbar = () => {
@@ -68,7 +73,7 @@ const checkForDarkMode = () => {
     };
 };
 
-const storeAdditionalOptions = (obj, index, arr) => {
+const storeAdditionalOptions = ( obj, index, arr) => {
     /* Function that:
        loops through array of objects, 
        stores the property's value into an empty array 
@@ -78,9 +83,9 @@ const storeAdditionalOptions = (obj, index, arr) => {
         each of these objects and store the VALUES of the objects inside 
         an array that will reset / empty once we close a selected country
     */
-       for (let value in obj[index]) {
+    for (let value in obj[index]) {
         arr.push(obj[index][value]);
-       };
+    };
 };
 
 const displayAdditionalOptions = arr => {
@@ -101,10 +106,14 @@ const updateCurrentCountry = index => {
        and appends them to a parent element
     */
    let currentCountryLanguages = [];
+   let nativeName = [];
+   let currency = [];
    let capitalName = '';
    let domain = '';
 
    storeAdditionalOptions(languages , index , currentCountryLanguages);
+   storeAdditionalOptions(nativeNames , index , nativeName);
+   storeAdditionalOptions(currencies , index , currency);
 
    let language = displayAdditionalOptions(currentCountryLanguages);
 
@@ -116,6 +125,9 @@ const updateCurrentCountry = index => {
         domain = tld[index][0];
     } else domain = 'none';
 
+    console.log(domain);
+    console.log(tld[index]);
+
    let currentCountryInfo = `<div class="current-country-flag"><img src="${flags[index]}" alt="Flag"></div>
 
     <div class="current-country-info">
@@ -125,16 +137,16 @@ const updateCurrentCountry = index => {
         <div>
             <div class="info-columns">
                 <div class="first-column">
-                    <div class="stat native-name"><span>Native Name: </span></div>
+                    <div class="stat native-name"><span>Native Name: ${nativeName[0]['official']}</span></div>
                     <div class="stat current-population"><span>Population: ${populations[index].toLocaleString()}</span></div>
                     <div class="stat current-region"><span>Region: ${regions[index]}</span></div>
-                    <div class="stat sub-region"><span>Sub Region: </span></div>
+                    <div class="stat sub-region"><span>Sub Region: ${subregions[index]}</span></div>
                     <div class="stat current-capital"><span>Capital: ${capitalName}</span></div>
                 </div>
 
                 <div class="second-column">
                     <div class="stat domain"><span>Top Level Domain: ${domain}</span></div>
-                    <div class="stat currency"><span>Currencies: </span></div>
+                    <div class="stat currency"><span>Currencies: ${currency[0]['name']}</span></div>
                     <div class="stat languages"><span>Languages: ${language}</span></div>
                 </div>
             </div>`;
@@ -252,6 +264,9 @@ xhttp.onreadystatechange = function () {
             dataStorage(obj);
             displayCountries(i);
         });
+
+        console.log(data);
+        /* console.log(nativeNames[0]['bul']); */
 
         /* Displays additional information about a current flag */
         displayCurrentCountry();
