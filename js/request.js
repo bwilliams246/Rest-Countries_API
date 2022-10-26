@@ -9,6 +9,7 @@ const backBtn = document.getElementsByClassName('back-btn')[0];
 let countryNames = [];
 let populations = [];
 let subregions = [];
+let languages = [];
 let regions = [];
 let capitals = [];
 let flags = [];
@@ -20,6 +21,7 @@ const dataStorage = data => {
     countryNames.push(data.name.common);
     populations.push(data.population);
     subregions.push(data.tld);
+    languages.push(data.languages);
     regions.push(data.region);
     capitals.push(data.capital);
     flags.push(data.flags.png);
@@ -66,12 +68,45 @@ const checkForDarkMode = () => {
     };
 };
 
+const storeAdditionalOptions = (obj, index, arr) => {
+    /* Function that:
+       loops through array of objects, 
+       stores the property's value into an empty array 
+
+       The API data has multiple sub-arrays, and inside those arrays, there
+        may be a multitude of objects. Therefore, we need to loop through 
+        each of these objects and store the VALUES of the objects inside 
+        an array that will reset / empty once we close a selected country
+    */
+       for (let value in obj[index]) {
+        arr.push(obj[index][value]);
+       };
+};
+
+const displayAdditionalOptions = arr => {
+    let allOptions = '';
+
+    arr.forEach( option => {
+        if (option !== arr[arr.length - 1]) {
+            allOptions+= option + ', '
+        }; 
+    });
+    allOptions += arr[arr.length - 1]
+
+    return allOptions;
+};
+
 const updateCurrentCountry = index => {
     /* Function that places the selected country's stats in HTML elements 
        and appends them to a parent element
     */
+   let currentCountryLanguages = [];
    let capitalName = '';
    let domain = '';
+
+   storeAdditionalOptions(languages , index , currentCountryLanguages);
+
+   let language = displayAdditionalOptions(currentCountryLanguages);
 
     if (capitals[index]) {
         capitalName = capitals[index][0];
@@ -100,7 +135,7 @@ const updateCurrentCountry = index => {
                 <div class="second-column">
                     <div class="stat domain"><span>Top Level Domain: ${domain}</span></div>
                     <div class="stat currency"><span>Currencies: </span></div>
-                    <div class="stat languages"><span>Languages: </span></div>
+                    <div class="stat languages"><span>Languages: ${language}</span></div>
                 </div>
             </div>`;
     
@@ -211,7 +246,6 @@ var xhttp = new XMLHttpRequest();
 xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
         let data = JSON.parse(xhttp.responseText);
-        console.log(data[10].languages);
         
         /* Loops through the entire dataset */
         data.forEach( (obj , i) => {
@@ -227,4 +261,4 @@ xhttp.onreadystatechange = function () {
     };
 };
 xhttp.open("GET" , "https://restcountries.com/v3.1/all" , true);
-xhttp.send(); 
+xhttp.send();
