@@ -137,17 +137,17 @@ const updateCurrentCountry = index => {
         <div>
             <div class="info-columns">
                 <div class="first-column">
-                    <div class="stat native-name"><span>Native Name: ${nativeName[0]['official']}</span></div>
-                    <div class="stat current-population"><span>Population: ${populations[index].toLocaleString()}</span></div>
-                    <div class="stat current-region"><span>Region: ${regions[index]}</span></div>
-                    <div class="stat sub-region"><span>Sub Region: ${subregions[index]}</span></div>
-                    <div class="stat current-capital"><span>Capital: ${capitalName}</span></div>
+                    <div class="stat native-name"><span>Native Name: </span>${nativeName[0]['official']}</div>
+                    <div class="stat current-population"><span>Population: </span>${populations[index].toLocaleString()}</div>
+                    <div class="stat current-region"><span>Region: </span>${regions[index]}</div>
+                    <div class="stat sub-region"><span>Sub Region: </span>${subregions[index]}</div>
+                    <div class="stat current-capital"><span>Capital: </span>${capitalName}</div>
                 </div>
 
                 <div class="second-column">
-                    <div class="stat domain"><span>Top Level Domain: ${domain}</span></div>
-                    <div class="stat currency"><span>Currencies: ${currency[0]['name']}</span></div>
-                    <div class="stat languages"><span>Languages: ${language}</span></div>
+                    <div class="stat domain"><span>Top Level Domain: </span>${domain}</div>
+                    <div class="stat currency"><span>Currencies: </span>${currency[0]['name']}</div>
+                    <div class="stat languages"><span>Languages: </span>${language}</div>
                 </div>
             </div>`;
     
